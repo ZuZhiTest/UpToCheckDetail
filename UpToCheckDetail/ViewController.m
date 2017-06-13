@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ProductDetailViewController.h"
 
 @interface ViewController ()
 
@@ -17,8 +18,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+  
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    btn.center = self.view.center;
+    
+    btn.bounds = CGRectMake(0, 0, 50, 50);
+    
+    btn.backgroundColor = [UIColor cyanColor];
+    
+    [btn  addTarget:self action:@selector(pushGoodDetailVC) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:btn];
+    
 }
 
+- (void)pushGoodDetailVC {
+    
+    ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]init];
+    
+    productDetailVC.title = @"商品详情";
+    
+    [self.navigationController pushViewController:productDetailVC animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
